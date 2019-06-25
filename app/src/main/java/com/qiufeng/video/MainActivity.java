@@ -10,12 +10,15 @@ package com.qiufeng.video;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -30,15 +33,19 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     boolean doAddText = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         immerse();
+        MediaPlayer player = playBGM();
 
         final FrameLayout frameLayout = new FrameLayout(this);
         frameLayout.setBackgroundColor(Color.BLACK);
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this, 100);
             }
         });
+        player.start();
         //setContentView(R.layout.activity_main);
     }
 
@@ -141,5 +149,18 @@ public class MainActivity extends AppCompatActivity {
         //End following code from https://blog.csdn.net/do168/article/details/51587935
 
         setImmersive(true);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    protected MediaPlayer playBGM() {
+        AssetFileDescriptor is = getResources().openRawResourceFd(R.raw.beginning);
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        try {
+            mediaPlayer.setDataSource(is);
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return mediaPlayer;
     }
 }
