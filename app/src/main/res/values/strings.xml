@@ -1,3 +1,10 @@
+<!--
+  ~ This file is created by Qiufeng54321.
+  ~ Copyright (c) 2019.
+  ~ All rights reserved.
+  ~ This file is under GNU General Public License v3.0.
+  -->
+
 <resources>
     <string name="app_name">Video</string>
     <string name="author">Qiufeng54321</string>

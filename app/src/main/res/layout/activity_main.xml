@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ This file is created by Qiufeng54321.
+  ~ Copyright (c) 2019.
+  ~ All rights reserved.
+  ~ This file is under GNU General Public License v3.0.
+  -->
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
